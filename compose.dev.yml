@@ -1,0 +1,12 @@
+services:
+  bot:
+    container_name: bot_dev
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dev
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - ./downloads:/app/downloads
+    restart: always
