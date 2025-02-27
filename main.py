@@ -23,16 +23,16 @@ async def download_audio(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     download_folder = f'downloads/{uuid.uuid4()}'
     os.makedirs(download_folder, exist_ok=True)
+    cookies_file = 'cookies.txt'
 
     with yt_dlp.YoutubeDL({
+        'cookies': cookies_file,
         'format': 'bestaudio',
         'noplaylist': True,
         'quiet': True
     }) as ydl:
         info_dict = ydl.extract_info(url, download=False)
         file_size = info_dict.get('filesize', 0)
-        title = info_dict.get('title', 'audio')
-        uploader = info_dict.get('uploader', 'audio')
 
     if file_size and file_size > 150 * 1024 * 1024:  # 150 MB in bytes
         await update.message.reply_text('Audio is too large.')
@@ -41,6 +41,7 @@ async def download_audio(update: Update, context: ContextTypes.DEFAULT_TYPE):
     file_path = f"{download_folder}/%(title)s.%(ext)s"
 
     with yt_dlp.YoutubeDL({
+        'cookies': cookies_file,
         'noplaylist': True,
         'outtmpl': file_path,
         'quiet': True,
