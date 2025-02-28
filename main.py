@@ -26,6 +26,7 @@ async def download_audio(update: Update, context: ContextTypes.DEFAULT_TYPE):
     cookies_file = 'cookies.txt'
 
     with yt_dlp.YoutubeDL({
+        'cookies': cookies_file,
         'cookiefile': cookies_file,
         'format': 'bestaudio',
         'noplaylist': True,
@@ -41,6 +42,7 @@ async def download_audio(update: Update, context: ContextTypes.DEFAULT_TYPE):
     file_path = f"{download_folder}/%(title)s.%(ext)s"
 
     with yt_dlp.YoutubeDL({
+        'cookies': cookies_file,
         'cookiefile': cookies_file,
         'noplaylist': True,
         'outtmpl': file_path,
