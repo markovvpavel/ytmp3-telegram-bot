@@ -13,13 +13,13 @@ async def download_audio(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if not re.match(video_pattern, url):
         await update.message.reply_text(
-            "Invalid link.")
+            "❌ Invalid link")
         return
 
     await update.message.reply_text(
-        "Valid link!")
+        "✅ Valid link")
     await update.message.reply_text(
-        "Begin downloading...")
+        "⬇️ Downloading...")
 
     cookies_file = 'cookies.txt'
 
@@ -67,14 +67,14 @@ async def download_audio(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_audio(audio_file)
 
     else:
-        await update.message.reply_text("Failed to download audio.")
+        await update.message.reply_text("❌ Failed to download audio, please try again")
 
     shutil.rmtree(download_folder)
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Hello! Send me a YouTube link to download MP3 audio.")
+        "Hello! Send me a YouTube link to download MP3 audio ✨")
 
 
 def main():
