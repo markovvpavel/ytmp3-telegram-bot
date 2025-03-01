@@ -66,11 +66,10 @@ async def download_audio(update: Update, context: ContextTypes.DEFAULT_TYPE):
         with open(downloaded_file, 'rb') as audio_file:
             await update.message.reply_audio(audio_file)
 
-        shutil.rmtree(download_folder)
-
     else:
         await update.message.reply_text("Failed to download audio.")
-        shutil.rmtree(download_folder)
+
+    shutil.rmtree(download_folder)
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
