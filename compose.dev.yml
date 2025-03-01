@@ -9,4 +9,5 @@ services:
     volumes:
       - .:/app
       - ./downloads:/app/downloads
+      - ./data:/app/data
     restart: always

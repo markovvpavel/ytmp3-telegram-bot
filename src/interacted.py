@@ -1,7 +1,7 @@
 import json
 import os
 
-INTERACTED_FILE = 'interacted.json'
+INTERACTED_FILE = 'data/interacted.json'
 
 
 def load():
@@ -19,6 +19,7 @@ def save(users):
 
 def interacted(user):
     if not os.path.exists(INTERACTED_FILE):
+        os.makedirs('data', exist_ok=True)
         save([])
 
     users_interacted = load()

@@ -1,4 +1,5 @@
-**/*env*
+.env
 **/.DS_Store
-**/downloads
-interacted.json
+downloads
+data
+venv
