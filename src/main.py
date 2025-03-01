@@ -5,6 +5,7 @@ import yt_dlp
 import shutil
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, MessageHandler, filters
+from interacted import interacted
 
 
 async def download_audio(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -73,6 +74,9 @@ async def download_audio(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user = update.message.from_user
+    interacted(user)
+
     await update.message.reply_text(
         "Hello! Send me a YouTube link to download MP3 audio ✨")
 

@@ -23,4 +23,4 @@ WORKDIR /app
 
 COPY ./ /app
 
-CMD ["nodemon", "--watch", "*", "--ext", "py,html", "--exec", "python3", "-u", "main.py"]
+CMD ["nodemon", "--watch", "*", "--ext", "py,html", "--exec", "python3", "-u", "src/main.py"]
